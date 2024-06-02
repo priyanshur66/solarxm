@@ -15,7 +15,7 @@ let notifications = [
   {
     name: "WeatherXM installation",
     description: "stations",
-    time: "15m ago",
+    time: "",
 
     icon: "💸",
     color: "#00C9A7",
@@ -23,21 +23,21 @@ let notifications = [
   {
     name: "GenSensor Integration",
     description: "SolarXM",
-    time: "10m ago",
+    time: "",
     icon: "👤",
     color: "#FFB800",
   },
   {
     name: "Brand Integrations",
     description: "Shopify",
-    time: "5m ago",
+    time: "",
     icon: "💬",
     color: "#FF3D71",
   },
   {
     name: "Users Incentivization",
     description: "Claim Coupans",
-    time: "2m ago",
+    time: "",
     icon: "🗞️",
     color: "#1E86FF",
   },
