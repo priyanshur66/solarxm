@@ -336,3 +336,66 @@ export async function generateDiscountCode(
     console.error("Error creating discount code:", error);
   }
 }
+export async function getNearbyWeatherXMDevices(param) {
+  const response = await fetch(`https://api.weatherxm.com/api/v1/network/search?query=${param}&exact=false&exclude=places`);
+  
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+export async function getSolarIrradiance(param) {
+  const response = await fetch(`https://api.weatherxm.com/api/v1/cells/${param}/devices`);
+  
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+async function fetchWeatherxmData() {
+  const url = "https://api.weatherxm.com/api/v1/cells/";
+  try {
+      const response = await fetch(url);
+      if (response.ok) {
+          return await response.json();
+      } else {
+          throw new Error('Network response was not ok');
+      }
+  } catch (error) {
+      console.error('Fetch error:', error);
+      return [];
+  }
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  // Euclidean distance
+  return Math.sqrt(Math.pow(lat1 - lat2, 2) + Math.pow(lon1 - lon2, 2));
+}
+
+export async function findClosestDeviceIndex(targetLat, targetLon) {
+  const data = await fetchWeatherxmData();
+  if (!data.length) {
+      return null;
+  }
+
+  let closestIndex = null;
+  let smallestDistance = Infinity;
+
+  data.forEach(entry => {
+      const centerLat = entry.center.lat;
+      const centerLon = entry.center.lon;
+      const distance = calculateDistance(targetLat, targetLon, centerLat, centerLon);
+      if (distance < smallestDistance) {
+          smallestDistance = distance;
+          closestIndex = entry.index;
+      }
+  });
+
+  return closestIndex;
+}

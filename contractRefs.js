@@ -557,6 +557,6 @@ export const registryAbi = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-];
+]
   
-  export const registryAddress = "0xa79A6326251B0051788DCa2337137afc678c2A7B";
+  export const registryAddress = "0x6d04BCca2B6548c7C835E941A78F5a343E173b4c";
