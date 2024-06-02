@@ -2,20 +2,10 @@
 import Link from "next/link";
 import { ethers } from "ethers";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-
 import { connectWithMetamask } from "../utils";
 import { useState, useEffect } from "react";
-export default function Nabvar() {
-  const [userAddress, setUserAddress] = useState("Connect ");
-  useEffect(() => {
-    const fetchData = async () => {
-      const address = await connectWithMetamask();
-      const truncatedAddress = address.slice(0, 6);
-      setUserAddress(truncatedAddress);
-    };
-
-    fetchData();
-  }, []);
+export default function BrandNavbar() {
+  
   return (
     <div className="">
       <nav className=" border-black bg-white m-2  rounded-lg backdrop-blur-md">
@@ -31,13 +21,16 @@ export default function Nabvar() {
             </a>
           </Link>
 
+          <div className="flex md:order-2 space-x-3 ">
+            <ConnectButton/>
+          </div>
 
 
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-cta"
           >
-            <ul className="flex font-sans font-semibold text-3xl md:p-1 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-500  ">
+            <ul className="flex font-sans font-semibold text-2xl md:p-1 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-500  ">
               <Link legacyBehavior href="/brand/setup">
                 <li>
                   <a
