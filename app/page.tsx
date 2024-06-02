@@ -1,12 +1,9 @@
-import Image from "next/image";
-import Navbar from "@/components/Navbar"
 import Nabvar from "@/components/Navbar";
-
+import Landing from "@/app/landing/page"
 export default function Home() {
   return (
-    <main className=" min-h-screen items-center justify-between ">
-      <Nabvar />
-      
+    <main className=" min-h-screen items-center justify-between">
+      <Landing />
     </main>
   );
 }
