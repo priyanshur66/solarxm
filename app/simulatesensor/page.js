@@ -1,5 +1,9 @@
-"use client"
-import { getNearbyWeatherXMDevices, getSolarIrradiance, findClosestDeviceIndex } from "@/utils";
+"use client";
+import {
+    getNearbyWeatherXMDevices,
+    getSolarIrradiance,
+    findClosestDeviceIndex
+} from "@/utils";
 import { useEffect, useState } from "react";
 
 export default function SimulateSensor() {
@@ -13,8 +17,6 @@ export default function SimulateSensor() {
     const [intervalId, setIntervalId] = useState(null);
     const [totalEnergyUsed, setTotalEnergyUsed] = useState(0);
     const [totalExpectedOutput, setTotalExpectedOutput] = useState(0);
-    const [showSendButton, setShowSendButton] = useState(false);
-    const [showAnomalyButton, setShowAnomalyButton] = useState(false);
     const [hasStarted, setHasStarted] = useState(false);
     const [hasStopped, setHasStopped] = useState(false);
 
@@ -58,24 +60,6 @@ export default function SimulateSensor() {
         }
     }, [time, solarIrradiance, voltage, current, capturing]);
 
-    useEffect(() => {
-        if (hasStopped) {
-            const energyDiff = totalExpectedOutput - totalEnergyUsed;
-            const tolerance = totalExpectedOutput * 0.1;
-
-            if (energyDiff >= -tolerance && energyDiff <= tolerance) {
-                setShowSendButton(true);
-                setShowAnomalyButton(false);
-            } else if (totalEnergyUsed > totalExpectedOutput * 1.1) {
-                setShowSendButton(false);
-                setShowAnomalyButton(true);
-            } else {
-                setShowSendButton(false);
-                setShowAnomalyButton(false);
-            }
-        }
-    }, [totalEnergyUsed, totalExpectedOutput, hasStopped]);
-
     const handleLongitudeChange = (e) => {
         setLongitude(parseFloat(e.target.value));
     };
@@ -105,8 +89,6 @@ export default function SimulateSensor() {
             updateCaptureData();
         }, 10000); // Capture every 10 seconds
         setIntervalId(id);
-        setShowSendButton(false);
-        setShowAnomalyButton(false);
     };
 
     const stopCapture = () => {
@@ -120,6 +102,30 @@ export default function SimulateSensor() {
         // Placeholder function to interact with the smart contract
         console.log("Data sent to the smart contract");
     };
+
+    const getButtonToShow = () => {
+        if (!hasStopped) return null;
+
+        const energyDiff = totalExpectedOutput - totalEnergyUsed;
+        const tolerance = totalExpectedOutput * 0.1;
+
+        if (energyDiff >= -tolerance && energyDiff <= tolerance) {
+            return (
+                <button type="button" onClick={sendToSmartContract}>
+                    Send to Smart Contract
+                </button>
+            );
+        } else if (totalEnergyUsed > totalExpectedOutput * 1.1) {
+            return (
+                <button type="button">
+                    Anomaly Detected: Can't Send Data to Smart Contract
+                </button>
+            );
+        }
+        return null;
+    };
+
+    const slrTokens = totalEnergyUsed / 200;
 
     return (
         <div>
@@ -177,16 +183,9 @@ export default function SimulateSensor() {
                     <h2>Total Expected Solar Panel Output: {totalExpectedOutput.toFixed(2)} Wh</h2>
                 </div>
             )}
-            {hasStopped && (
-                <>
-                    {showSendButton && (
-                        <button type="button" onClick={sendToSmartContract}>Send to Smart Contract</button>
-                    )}
-                    {showAnomalyButton && (
-                        <button type="button">Anomaly Detected: Can't Send Data to Smart Contract</button>
-                    )}
-                </>
-            )}
+            {getButtonToShow()}
+            <h2>SLR Tokens</h2>
+            <p>You will recieve  {slrTokens.toFixed(2)} SLR tokens</p>
         </div>
     );
 }
