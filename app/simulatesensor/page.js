@@ -41,7 +41,7 @@ export default function SimulateSensor() {
         if (capturing) {
             fetchSolarIrradiance();
         }
-    }, [latitude, longitude, capturing]);
+    }, [latitude, longitude, capturing,fetchSolarIrradiance]);
 
     useEffect(() => {
         const calculateAndAccumulate = () => {
@@ -119,7 +119,7 @@ export default function SimulateSensor() {
         } else if (totalEnergyUsed > totalExpectedOutput * 1.1) {
             return (
                 <button className=" text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center" type="button">
-                    Anomaly Detected: Cannnot Send Data to Smart Contract
+                    Anomaly Detected Cannnot Send Data to Smart Contract
                 </button>
             );
         }
