@@ -2,6 +2,9 @@
 
 SolarXM introduces an innovative ecosystem to accelerate the adoption and generation of renewable energy. With the GenSensor technology, individuals can attach smart sensors to their green energy sources, like solar panels, to track and convert energy production into digital tokens. This mechanism not only encourages renewable energy generation but also allows for the creation and trade of green energy certificates in our marketplace, promoting transparency and economic activity within the green energy sector. Addressing real-world problems, our project directly contributes to reducing the global carbon footprint by providing economic incentives for clean energy usage, thereby making green energy more financially attractive and accessible. Ultimately, our initiative empowers individuals to actively participate in a sustainable energy future, bridging the gap between renewable energy producers and consumers, and fostering a community committed to environmental stewardship.
 
+# Workflow
+![Harmony workflow](./public/Solar.png)
+
 # Key Features
 
 - **Innovative Sensor Technology:** Tracks and converts renewable energy production into digital tokens, incentivizing green energy generation.
