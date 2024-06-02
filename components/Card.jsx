@@ -31,7 +31,7 @@ const card = ({ array }) => {
           <></>
         )}
 
-        <span className="ml-5 font-semibold text-xl">HM Tokens</span>
+        <span className="ml-5 font-semibold text-xl">SLR Tokens</span>
         <div className="border-2 rounded-lg m-2 mb-5 ml-5 w-1/3 text-2xl px-3">
           {Number(array[10])}
         </div>

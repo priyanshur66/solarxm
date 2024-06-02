@@ -50,7 +50,7 @@ export default function Brand() {
       </button>
       </div>
       </div>
-      <BackgroundBeams />
+     
     </div>
       
     </div>

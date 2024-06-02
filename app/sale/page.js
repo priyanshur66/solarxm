@@ -73,8 +73,8 @@ export default function Main() {
         }}
         <div className=" mt-36 text-white items-center justify-center w-full">
         <div className=" text-4xl font-extrabold tracking-tight lg:text-5xl text-center border-1 rounded-xl content-center font-roboto p-2 border-2 mx-48 border-white py-5 ">
-          You have generated <mark className="px-5 rounded-lg bg-white"><span className="text-green-600">{hmBalance}</span></mark>{" "}
-          HM tokens{" "}
+          You have generated <mark className="px-5 rounded-lg bg-white"><span className="text-green-600">{SLRBalance}</span></mark>{" "}
+          SLR tokens{" "}
       >
         click
       </button> */}
