@@ -5,10 +5,10 @@ export function FlipWordsDemo() {
   const words = ["better", "Sustainable", "beautiful", "Green"];
 
   return (
-    <div className="h-[8rem] flex justify-center items-center px-2">
-      <div className="text-8xl font-Roboto text-white font-bold">
+    <div className="h-[4rem] flex justify-center items-center px-2">
+      <div className="text-7xl font-Roboto text-white font-bold">
         Build
-        <FlipWords words={words} /> <br />
+        <FlipWords words={words} /> 
         Future with us !
       </div>
     </div>
