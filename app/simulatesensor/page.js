@@ -5,6 +5,7 @@ import {
     findClosestDeviceIndex
 } from "@/utils";
 import { useEffect, useState } from "react";
+import Nabvar from "@/components/Navbar";
 
 export default function SimulateSensor() {
     const [longitude, setLongitude] = useState(0);
@@ -128,54 +129,55 @@ export default function SimulateSensor() {
     const slrTokens = totalEnergyUsed / 200;
 
     return (
-        <div>
-            <form>
-                <label>
-                    Longitude:
-                    <input 
-                        type="number" 
+        <div className="bg-black">
+            <Nabvar/>
+            <div className="flex flex-col">
+            
+            <div className="text-white mt-24">
+                <form class="w-1/2 text-white ml-8 pr-20 border-white border-r-2">
+                    <div class="mb-3 w-1/2">
+                        <label for="email" class="block mb-2 text-lg font-medium text-white">Longitude</label>
+                        <input type="number" 
                         value={longitude} 
                         onChange={handleLongitudeChange} 
-                        step="0.000001" 
-                    />
-                </label>
-                <br />
-                <label>
-                    Latitude:
-                    <input 
-                        type="number" 
+                        step="0.000001"  class="bg-gray-50 border border-gray-300 text-gray-900 font-medium text-sm             rounded-lg block w-full p-1.5" placeholder="Longitude" />
+                    </div>
+
+                    <div class="mb-5 w-1/2">
+                    <label for="email" class="block mb-2 text-lg font-medium text-white">Latitude</label>
+                    <input type="number" 
                         value={latitude} 
                         onChange={handleLatitudeChange} 
-                        step="0.000001" 
-                    />
-                </label>
-            </form>
-            <h2>Enter Voltage and Current</h2>
-            <label>
-                Voltage (V):
-                <input 
-                    type="number" 
-                    value={voltage} 
-                    onChange={handleVoltageChange} 
-                    step="0.1" 
-                />
-            </label>
-            <br />
-            <label>
-                Current (A):
-                <input 
-                    type="number" 
-                    value={current} 
-                    onChange={handleCurrentChange} 
-                    step="0.1" 
-                />
-            </label>
+                        step="0.000001"  class="bg-gray-50 border border-gray-300 text-gray-900 font-medium text-sm             rounded-lg block w-full p-1.5" placeholder="Longitude" />
+                    </div>
+
+                    <h2 className="ml-12 mt-8 text-2xl mb-2">Enter Voltage and Current</h2>
+
+                    <div class="mb-3 w-1/2">
+                    <label for="email" class="block mb-2 text-lg font-medium text-white">Voltage (V)</label>
+                        <input type="number" 
+                        value={voltage} 
+                        onChange={handleVoltageChange} 
+                        step="0.1"  class="bg-gray-50 border border-gray-300 text-gray-900 font-medium text-sm rounded-lg block w-full p-1.5" placeholder="voltage" />
+                    </div>
+
+                    <div class="mb-5 w-1/2">
+                    <label for="email" class="block mb-2 text-lg font-medium text-white">Current (A)</label>
+                        <input type="number" 
+                        value={current} 
+                        onChange={handleCurrentChange} 
+                        step="0.1"   class="bg-gray-50 border border-gray-300 text-gray-900 font-medium text-sm rounded-lg block w-full p-1.5" placeholder="current" />
+                    </div>
+            </form>        
             <br />
             {!capturing ? (
-                <button type="button" onClick={startCapture}>Start Capture</button>
+                <button class="ml-8 text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center " type="button" onClick={startCapture}>Start Capture</button>
             ) : (
-                <button type="button" onClick={stopCapture}>Stop Capture</button>
+                <button class="ml-8 text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center " type="button" onClick={stopCapture}>Stop Capture</button>
             )}
+            
+            </div>
+            <div className="text-white">
             {solarIrradiance !== null && (
                 <div>
                     <h1>Solar Irradiance: {solarIrradiance} W/m²</h1>
@@ -186,6 +188,11 @@ export default function SimulateSensor() {
             {getButtonToShow()}
             <h2>SLR Tokens</h2>
             <p>You will recieve  {slrTokens.toFixed(2)} SLR tokens</p>
+            </div>
+
+
+            </div>
+
         </div>
     );
 }
