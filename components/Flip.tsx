@@ -2,7 +2,7 @@ import React from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 
 export function FlipWordsDemo() {
-  const words = ["better", "Sustainable", "beautiful", "modern"];
+  const words = ["better", "Sustainable", "beautiful", "Green"];
 
   return (
     <div className="h-[8rem] flex justify-center items-center px-2">

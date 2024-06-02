@@ -4,47 +4,20 @@ export default function Landing(){
     return(
         <div className="items-center justify-between bg-black max-h-screen">
             <Navbar />
-            <div className="mt-40">
-            <FlipWordsDemo />
-             </div>
+                <div className="mt-40">
+                    <FlipWordsDemo />
+                </div>
 
-             <div className="mt-16 border-2 border-white flex mx-5 rounded-lg text-white ">
-             
-                <div className="ml-2">
-                    <span className="text-5xl font-Roboto tracking-tight font-semibold">
+                <div className="mt-16 border-2 border-white flex flex-row mx-5 rounded-lg text-white ">
+                    <div className="ml-2">
+                        <span className="text-5xl font-Roboto tracking-tight font-semibold">
                         our passion for service
-                    </span>
-                </div>
-                <div className="mx-40">
+                        </span>
+                    </div>
+                    <div className="mx-40">
                     <span className="text-3xl font-medium tracking-tight">approach based on the different understanding the market , we are committed to deliver innovative energy solution</span>
-                </div>
-             </div>
-
-             <div className="mt-10 border-2 border-white text-white flex mx-5 rounded-lg">
-            
-                <div className="ml-2">
-                    <span className="text-5xl font-Roboto tracking-tight font-semibold">
-                        we priotize the quality
-                    </span>
-                </div>
-                <div className="mx-40">
-                    <span className="text-3xl font-medium tracking-tight">approach based on the different understanding the market , we are committed to deliver innovative energy solution</span>
-                </div>
-             </div>
-
-             <div className="mt-10 border-2 border-white text-white flex mx-5 rounded-lg">
-             
-                <div className="ml-2">
-                    <span className="text-5xl font-Roboto tracking-tight font-semibold">
-                        Light it up innovation
-                    </span>
-                </div>
-                <div className="mx-40">
-                    <span className="text-3xl font-medium tracking-tight">approach based on the different understanding the market , we are committed to deliver innovative energy solution</span>
-                </div>
-             </div>
-         
-
+                    </div>
+               </div>
         </div>
     )
 }

@@ -5,7 +5,7 @@ import { cn } from "@/components/utils/cn";
 
 export const FlipWords = ({
   words = [], // Default to an empty array if words are not provided
-  duration = 3000,
+  duration = 2000,
   className,
 }: {
   words: string[];
