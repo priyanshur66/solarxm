@@ -13,7 +13,7 @@ contract Registry {
         uint256 optionFee;
         uint256 optionDuration;
         bool fulfilled;
-        uint256 noOfHMTokens;
+        uint256 noOfSLRTokens;
         uint256 createdAt;
     }
     
@@ -40,7 +40,7 @@ contract Registry {
     event optionCreated(
         address indexed lessor,
         uint256 optionId,
-        uint256 noOfHMTokens,
+        uint256 noOfSLRTokens,
         uint256 collateral
     );
     event optionTaken(address indexed lessee, uint256 optionId);
@@ -75,7 +75,7 @@ contract Registry {
         return (arrLength);
     }
 
-    function updateHMTokenBalance(string memory _code, uint256 _newValue)
+    function updateSLRTokenBalance(string memory _code, uint256 _newValue)
         public
     {
         //require(checkVerifiedSensors(_code));
@@ -87,7 +87,7 @@ contract Registry {
         balances[genStationToAddress[_code]] = _newValue;
     }
 
-    function returnHmBalance() public view returns (uint256) {
+    function returnSLRBalance() public view returns (uint256) {
         return (balances[msg.sender]);
     }
 
@@ -102,9 +102,9 @@ contract Registry {
         order.owner = msg.sender;
         order.fulfilled = true;
         order.optionDuration = 0;
-        balances[msg.sender] += order.noOfHMTokens;
+        balances[msg.sender] += order.noOfSLRTokens;
         payable(order.seller).transfer(msg.value);
-        credsMarketPrice = order.sellPrice / order.noOfHMTokens;
+        credsMarketPrice = order.sellPrice / order.noOfSLRTokens;
     }
     function consumeToken(uint256 _orderId) public payable {
         // to update time in cintract and end options
@@ -118,15 +118,15 @@ contract Registry {
         order.owner = msg.sender;
         order.fulfilled = true;
         order.optionDuration = 0;
-        recBalances[msg.sender] += order.noOfHMTokens;
+        recBalances[msg.sender] += order.noOfSLRTokens;
         addEligiblePromotions(order.seller,addressToPromotionSecret[msg.sender]);
         payable(order.seller).transfer(msg.value); 
-       credsMarketPrice = order.sellPrice / order.noOfHMTokens;
+       credsMarketPrice = order.sellPrice / order.noOfSLRTokens;
     }
 
     function listOrder(
         uint256 _sellPrice,
-        uint256 _noOfHMTokens,
+        uint256 _noOfSLRTokens,
         uint256 _optionPrice,
         uint256 _duration
     ) public {
@@ -134,7 +134,7 @@ contract Registry {
         updateTime();
         checkExpiredOptions();
 
-        require(balances[msg.sender] >= _noOfHMTokens, "Insufficient HMTokens");
+        require(balances[msg.sender] >= _noOfSLRTokens, "Insufficient SLRTokens");
         //require(usdtToken.transferFrom(msg.sender, address(this), _collateral), "Collateral transfer failed");
 
         orderArray.push(
@@ -149,12 +149,12 @@ contract Registry {
                 optionFee: _optionPrice,
                 optionDuration: _duration,
                 fulfilled: false,
-                noOfHMTokens: _noOfHMTokens,
+                noOfSLRTokens: _noOfSLRTokens,
                 createdAt: block.timestamp
             })
         );
-        balances[msg.sender] -= _noOfHMTokens;
-        // emit optionCreated(msg.sender, optionId, _noOfHMTokens, _collateral);
+        balances[msg.sender] -= _noOfSLRTokens;
+        // emit optionCreated(msg.sender, optionId, _noOfSLRTokens, _collateral);
     }
 
     function takeOnOption(uint256 _orderId) public payable {
@@ -168,7 +168,7 @@ contract Registry {
         order.owner = msg.sender;
         order.fulfilled = true;
         order.createdAt = block.timestamp;
-        balances[msg.sender] += order.noOfHMTokens;
+        balances[msg.sender] += order.noOfSLRTokens;
         payable(order.seller).transfer(msg.value);
     }
 
@@ -180,7 +180,7 @@ contract Registry {
 
     function endOption(uint256 _orderId) public payable onlyAdmin {
         Order storage order = orderArray[_orderId];
-        balances[order.owner] -= order.noOfHMTokens;
+        balances[order.owner] -= order.noOfSLRTokens;
         order.fulfilled = false;
         order.owner = order.seller;
     }
