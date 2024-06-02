@@ -5,24 +5,24 @@ import {
   getOrdersArray,
   addGenStation,
   getMarketPrice,
-  getHmTokenBalance,
+  getSLRTokenBalance,
 } from "../utils";
 import Card from "./Card";
 import Link from "next/link";
 export const 
 GridBackground = () => {
-  const [hmBalance, setHmBalance] = useState("Fetching ...");
+  const [SLRBalance, setSLRBalance] = useState("Fetching ...");
   const [marketPrice, setMarketPrice] = useState("Fetching");
   const [ordersArray, setOrdersArray] = useState([]);
 
-  async function handleHmBalanceUpdate() {
+  async function handleSLRBalanceUpdate() {
     //console.log("Fetching GW token balance...");
     try {
-      const updatedBalance = await getHmTokenBalance();
+      const updatedBalance = await getSLRTokenBalance();
       console.log("Fetched balance:", updatedBalance);
-      setHmBalance(updatedBalance);
+      setSLRBalance(updatedBalance);
     } catch (error) {
-      console.error("Failed to fetch HM token balance:", error);
+      console.error("Failed to fetch SLR token balance:", error);
     }
   }
 
@@ -38,12 +38,12 @@ GridBackground = () => {
       console.log("Fetched Market Price:", updatedPrice);
       setMarketPrice(updatedPrice);
     } catch (error) {
-      console.error("Failed to fetch HM token balance:", error);
+      console.error("Failed to fetch SLR token balance:", error);
     }
   }
 
   useEffect(() => {
-    handleHmBalanceUpdate();
+    handleSLRBalanceUpdate();
     updateArray();
     updateMarketPrice();
   }, [ordersArray]);
@@ -59,9 +59,9 @@ GridBackground = () => {
         <div className="text-center text-3xl font-extrabold tracking-tight text-white">
           You have generated 
           <mark className="px-5 rounded-2xl bg-sky-400 mx-3">
-            <span className="text-black">{hmBalance}</span>
+            <span className="text-black">{SLRBalance}</span>
           </mark> 
-          HM tokens 
+          SLR tokens 
         </div>
 
         <div className="text-center text-3xl pt-2 font-extrabold tracking-tight text-white">

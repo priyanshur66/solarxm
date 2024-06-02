@@ -7,23 +7,23 @@ import {
   getOrdersArray,
   addGenStation,
   getMarketPrice,
-  getHmTokenBalance,
+  getSLRTokenBalance,
 } from "../../../utils";
 import BrandCard from "../../../components/BrandCard";
 import Link from "next/link";
 export default function Sponsor() {
-  const [hmBalance, setHmBalance] = useState("Fetching ...");
+  const [SLRBalance, setSLRBalance] = useState("Fetching ...");
   const [marketPrice, setMarketPrice] = useState("Fetching");
   const [ordersArray, setOrdersArray] = useState([]);
 
-  async function handleHmBalanceUpdate() {
+  async function handleSLRBalanceUpdate() {
     //console.log("Fetching GW token balance...");
     try {
-      const updatedBalance = await getHmTokenBalance();
+      const updatedBalance = await getSLRTokenBalance();
       console.log("Fetched balance:", updatedBalance);
-      setHmBalance(updatedBalance);
+      setSLRBalance(updatedBalance);
     } catch (error) {
-      console.error("Failed to fetch HM token balance:", error);
+      console.error("Failed to fetch SLR token balance:", error);
     }
   }
 
@@ -52,12 +52,12 @@ export default function Sponsor() {
       console.log("Fetched Market Price:", updatedPrice);
       setMarketPrice(updatedPrice);
     } catch (error) {
-      console.error("Failed to fetch HM token balance:", error);
+      console.error("Failed to fetch SLR token balance:", error);
     }
   }
 
   useEffect(() => {
-    handleHmBalanceUpdate();
+    handleSLRBalanceUpdate();
     updateArray();
     updateMarketPrice();
   }, [ordersArray]);
@@ -80,11 +80,11 @@ export default function Sponsor() {
 
         <div className="border-2 border-white py-5 mt-10 mx-60 rounded ">
           <div className="text-center text-white text-3xl  font-extrabold tracking-wider">
-            You have Earned{" "}
+            You have Burned{" "}
             <mark className="px-5 py-2 rounded-2xl bg-sky-400">
-              <span className="text-black">{hmBalance}</span>
+              <span className="text-black">{SLRBalance}</span>
             </mark>{" "}
-            REC points{" "}
+            SLR tokens{" "}
           </div>
         </div>
 

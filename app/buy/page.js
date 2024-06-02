@@ -4,7 +4,7 @@ import {
   getOrdersArray,
   addGenStation,
   getMarketPrice,
-  getHmTokenBalance,
+  getSLRTokenBalance,
 } from "../../utils";
 import Card from "../../components/Card";
 import { GridBackground } from "@/components/Grid"

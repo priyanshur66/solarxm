@@ -235,7 +235,7 @@ export async function checkIsBrand() {
   // console.log(abi);
   // console.log(provider);
   const contract = new ethers.Contract(address, abi, provider);
-  const tx = await contract.checkIsBrand(signer.address);
+  const tx = await contract.isBrand(signer.address);
   //await tx.wait();
   //console.log(tx.toString());
   return tx;
