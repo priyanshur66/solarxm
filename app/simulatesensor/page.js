@@ -151,7 +151,7 @@ export default function SimulateSensor() {
                         step="0.000001"  class="bg-gray-50 border border-gray-300 text-gray-900 font-medium text-sm             rounded-lg block w-full p-1.5" placeholder="Longitude" />
                     </div>
 
-                    <h2 className="ml-12 mt-8 text-2xl mb-2">Enter Voltage and Current</h2>
+                    <h2 className="ml-5 mt-8 text-yellow-400 font-semibold text-2xl mb-2">Enter Voltage and Current</h2>
 
                     <div class="mb-3 w-1/2">
                     <label for="email" class="block mb-2 text-lg font-medium text-white">Voltage (V)</label>
@@ -181,6 +181,8 @@ export default function SimulateSensor() {
 
             <div className=" w-1/2 text-center mt-32">
             <div className="text-white text-2xl font-semibold text-left  ml-16 font-Roboto">
+            <h2 className="my-2">SLR Tokens</h2>
+            <p className="my-2">You will recieve  <span className="text-emerald-500">{slrTokens.toFixed(2)}</span> SLR tokens</p>
             {solarIrradiance !== null && (
                 <div className="gap-y-20">
                     <h1 className="my-2">Solar Irradiance: {solarIrradiance} W/m²</h1>
@@ -189,8 +191,7 @@ export default function SimulateSensor() {
                 </div>
             )}
             {getButtonToShow()}
-            <h2 className="my-2">SLR Tokens</h2>
-            <p className="my-2">You will recieve  <span className="text-emerald">{slrTokens.toFixed(2)}</span> SLR tokens</p>
+            
             </div>
             </div>
 
