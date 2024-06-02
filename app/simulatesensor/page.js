@@ -112,13 +112,13 @@ export default function SimulateSensor() {
 
         if (energyDiff >= -tolerance && energyDiff <= tolerance) {
             return (
-                <button type="button" onClick={sendToSmartContract}>
+                <button className=" text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center"  type="button" onClick={sendToSmartContract}>
                     Send to Smart Contract
                 </button>
             );
         } else if (totalEnergyUsed > totalExpectedOutput * 1.1) {
             return (
-                <button type="button">
+                <button className=" text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center" type="button">
                     Anomaly Detected: Can't Send Data to Smart Contract
                 </button>
             );
@@ -131,10 +131,10 @@ export default function SimulateSensor() {
     return (
         <div className="bg-black">
             <Nabvar/>
-            <div className="flex flex-col">
-            
-            <div className="text-white mt-24">
-                <form class="w-1/2 text-white ml-8 pr-20 border-white border-r-2">
+            <div className=" flex mt-20 max-h-screen text-white w-full">
+            <div className="border-r-2 w-1/2">
+            <div className="text-white mt-24 mb-48">
+                <form class=" text-white ml-16 pr-20 ">
                     <div class="mb-3 w-1/2">
                         <label for="email" class="block mb-2 text-lg font-medium text-white">Longitude</label>
                         <input type="number" 
@@ -171,25 +171,28 @@ export default function SimulateSensor() {
             </form>        
             <br />
             {!capturing ? (
-                <button class="ml-8 text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center " type="button" onClick={startCapture}>Start Capture</button>
+                <button class="ml-16 text-white bg-green-600 hover:bg-green-700  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center " type="button" onClick={startCapture}>Start Capture</button>
             ) : (
-                <button class="ml-8 text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center " type="button" onClick={stopCapture}>Stop Capture</button>
+                <button class="ml-16 text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center " type="button" onClick={stopCapture}>Stop Capture</button>
             )}
             
             </div>
-            <div className="text-white">
+            </div>
+
+            <div className=" w-1/2 text-center mt-32">
+            <div className="text-white text-2xl font-semibold text-left  ml-16 font-Roboto">
             {solarIrradiance !== null && (
-                <div>
-                    <h1>Solar Irradiance: {solarIrradiance} W/m²</h1>
-                    <h2>Total Energy Used: {totalEnergyUsed.toFixed(2)} Wh</h2>
-                    <h2>Total Expected Solar Panel Output: {totalExpectedOutput.toFixed(2)} Wh</h2>
+                <div className="gap-y-20">
+                    <h1 className="my-2">Solar Irradiance: {solarIrradiance} W/m²</h1>
+                    <h2 className="my-2">Total Energy Used: {totalEnergyUsed.toFixed(2)} Wh</h2>
+                    <h2 className="my-2">Total Expected Solar Panel Output: {totalExpectedOutput.toFixed(2)} Wh</h2>
                 </div>
             )}
             {getButtonToShow()}
-            <h2>SLR Tokens</h2>
-            <p>You will recieve  {slrTokens.toFixed(2)} SLR tokens</p>
+            <h2 className="my-2">SLR Tokens</h2>
+            <p className="my-2">You will recieve  <span className="text-emerald">{slrTokens.toFixed(2)}</span> SLR tokens</p>
             </div>
-
+            </div>
 
             </div>
 

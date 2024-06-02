@@ -10,16 +10,12 @@ export default function BrandNavbar() {
     <div className="">
       <nav className=" border-black bg-white m-2  rounded-lg backdrop-blur-md">
         <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-          <Link legacyBehavior href="/landing">
-            <a
-              href="/landing"
-              className="flex items-center space-x-2 "
-            >
-              <span className="self-center text-3xl font-bold whitespace-nowrap text-black">
-                SolarXM
-              </span>
+        <Link legacyBehavior href="/landing">
+            <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="https://static.vecteezy.com/system/resources/previews/001/194/541/original/lightning-png.png" className="h-8" alt="Flowbite Logo" />
+                <span className="self-center text-3xl font-semibold whitespace-nowrap ">SolarXM</span>
             </a>
-          </Link>
+            </Link>
 
           <div className="flex md:order-2 space-x-3 ">
             <ConnectButton/>
