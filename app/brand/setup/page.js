@@ -1,5 +1,5 @@
 "use client";
-import BrandNav from "@/components/BrandNav";
+import BrandNabvar from "@/components/BrandNav";
 import { addPromotionSecret, hashValues, unhashValues } from "@/utils";
 import { useState } from "react";
 export default function Setup() {
@@ -40,12 +40,13 @@ export default function Setup() {
     console.log(res);
   };
   return (
-    <div>
-      <BrandNav />
-      <div className="flex flex-row content-center justify-center mt-48">
+    <div className="bg-black">
+      <BrandNabvar />
+      <h1 className="text-white text-center mt-10">khhskf</h1>
+      <div className="flex flex-row content-center justify-center mt-44">
         <form
           onSubmit={handleAddPromotionSecret}
-          className="p-5 mx-40 flex flex-col border-black rounded-md bg-slate-300 border-2 w-1/2 "
+          className="py-10 px-5 mx-40 flex flex-col border-black rounded-md bg-slate-300 border-2 w-1/2 "
         >
           <label className="text-2xl font-bold">Shopify store Name</label>
           <input
@@ -71,9 +72,9 @@ export default function Setup() {
             Setup Brand
           </button>
         </form>
-        <h1 className=" font-extrabold tracking-tight text-5xl mx-10">
-          Setup your brand Seamlessly with <br />
-          Harmony .
+        <h1 className=" font-extrabold tracking-tight text-white text-5xl mx-10 py-3">
+          Setup your brand Seamlessly with 
+          SolarXM.
         </h1>
       </div>
     </div>

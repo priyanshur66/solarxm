@@ -71,25 +71,22 @@ export default function Main() {
         onClick={() => {
           handleSLRBalanceUpdate();
         }}
+        <div className=" mt-36 text-white items-center justify-center w-full">
+        <div className=" text-4xl font-extrabold tracking-tight lg:text-5xl text-center border-1 rounded-xl content-center font-roboto p-2 border-2 mx-48 border-white py-5 ">
+          You have generated <mark className="px-5 rounded-lg bg-white"><span className="text-green-600">{hmBalance}</span></mark>{" "}
+          HM tokens{" "}
       >
         click
       </button> */}
 
-<<<<<<< HEAD
       <div className=" mt-36 text-white items-center justify-center w-full">
-        <div className=" text-4xl font-extrabold tracking-tight lg:text-5xl text-center border-1 rounded-xl content-center font-roboto p-2 border-2 mx-48 border-white py-5 ">
-          You have generated <mark className="px-5 rounded-lg bg-white"><span className="text-green-600">{hmBalance}</span></mark>{" "}
-          HM tokens{" "}
-=======
-      <div className=" mt-16 items-center justify-center w-full">
-        <div className=" text-4xl font-extrabold tracking-tight lg:text-5xl text-center border-1 rounded-md content-center font-roboto p-2 border-2 mx-80 py-3 border-black ">
+        <div className=" text-4xl font-extrabold tracking-wide lg:text-5xl text-center border-1 rounded-md content-center font-Roboto p-2 border-2 mx-48 py-5 border-white ">
           You have generated <mark className="px-5 rounded-lg bg-white"><span className="text-green-600">{SLRBalance}</span></mark>{" "}
           SLR tokens{" "}
->>>>>>> 39868186d99ebf9f3f5c3f8fba2528e7548e6b0d
         </div>
 
         <div className="flex flex-row ml-96 mb-16">
-        <div className="ml-20 rounded-lg w-1/2  mt-12  bg-gray-800 p-6">
+        <div className="ml-20  w-1/2  mt-12  bg-gray-600 p-6">
   <label
     htmlFor="default-input"
     className="block mb-6 font-roboto font-semibold tracking-tight text-white text-center text-4xl"
@@ -112,7 +109,7 @@ export default function Main() {
       />
 
       <label htmlFor="priceField" className="text-xl mt-5 font-semibold text-white">
-        Total Price (Lisk)
+        Total Price (chain)
       </label>
       <input
         type="number"
@@ -140,7 +137,7 @@ export default function Main() {
 
       <div className={`w-full flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${toggle ? 'max-h-screen' : 'max-h-0'}`}>
         <label htmlFor="optionPriceField" className="text-xl font-semibold mt-5 text-white">
-          Price for Option (Fil)
+          Price for Option (amoy)
         </label>
         <input
           type="number"

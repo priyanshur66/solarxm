@@ -40,13 +40,13 @@ export default function Brand() {
         </p>
         <div className="flex flex-wrap content-center  justify-center">
         <button
-      className="border-2 px-8 text-3xl font-bold bg-emerald-500 hover:bg-white hover:text-black text-white border-black py-1 rounded-xl mb-24 "
+      className="border-2 px-8 text-3xl font-bold font-Roboto bg-gray-200 hover:bg-white hover:text-black text-black border-black py-1 mt-5 mb-24 "
         onClick={async () => {
           const res = await registerAsBrand();
           console.log(res);
         }}
       >
-        {hasJoined ? "successfully joined" : "join harmony"}
+        {hasJoined ? "successfully joined" : "Join SolarXM"}
       </button>
       </div>
       </div>
