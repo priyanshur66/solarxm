@@ -4,13 +4,10 @@ import { addGenStation } from "../../utils";
 import Navbar from "@/components/Navbar";
 import { ToastContainer, toast , Slide} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FlipWords } from "@/components/ui/flip-words";
 
 function AddGenSensor() {
-  
-
   const [code, setCode] = useState("");
-  
-
   function handleAddSensor() {
     addGenStation(code);
   }; 
@@ -40,14 +37,13 @@ function AddGenSensor() {
   return (
     <>
       <Navbar />
-      <div className="">
-      <div className="mt-32 bg-slate-500 text-center border-2 border-zinc-950 w-1/2 ml-96 rounded-lg p-8">
-        <label className="font-extrabold tracking-tight lg:text-5xl font-mono" htmlFor="">
-          Enter Secret Code
-        </label>
-        <br />
+      <div className="pt-40 bg-black text-white text-center font-Roboto font-bold text-7xl tracking-tight">
+        Enter your secret code
+      </div>
+      <div className="bg-black">
+      <div className=" text-center border-2 border-zinc-950 w-1/2 ml-96 rounded-lg p-8">
         <input
-          className="text-black text-2xl font-semibold h-8 w-64 mt-10 rounded-md border-2 border-slate-900"
+          className="text-black text-2xl font-semibold h-10 w-64 mt-10 rounded-md border-2 border-slate-900"
           value={code}
           onChange={(e) => {
             setCode(e.target.value);
@@ -57,7 +53,7 @@ function AddGenSensor() {
         />
 
         <button
-          className="border ml-8 px-5 py-1  font-bold rounded-xl border-slate-900 bg-slate-700 text-white hover:bg-white hover:text-black"
+          className="border ml-8 px-5 py-1.5 font-bold rounded-xl bg-slate-700 text-white hover:bg-white hover:text-black"
           onClick={combinedFunction}
         >
           ADD
@@ -66,13 +62,14 @@ function AddGenSensor() {
         
 
 
-        <p className="text-xl mt-24 font-medium">
+        <p className="text-xl mt-16 font-medium">
         &quot; Add sensors to make sure their reportings are added to your account
         &quot;
         </p>
       </div>
-      <div className="mt-10 text-center scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-5xl animate-move-text">Enter your Secret code and get your sensor integration ready .</div>
       </div>
+
+    
     </>
   );
 }

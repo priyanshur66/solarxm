@@ -2,13 +2,13 @@ import Navbar from "@/components/Navbar"
 import { FlipWordsDemo } from "@/components/Flip"
 export default function Landing(){
     return(
-        <div className="items-center justify-between">
+        <div className="items-center justify-between bg-black max-h-screen">
             <Navbar />
             <div className="mt-40">
             <FlipWordsDemo />
              </div>
 
-             <div className="mt-10 border-2 border-black flex mx-5 rounded-lg ">
+             <div className="mt-16 border-2 border-white flex mx-5 rounded-lg text-white ">
              
                 <div className="ml-2">
                     <span className="text-5xl font-Roboto tracking-tight font-semibold">
@@ -20,7 +20,7 @@ export default function Landing(){
                 </div>
              </div>
 
-             <div className="mt-10 border-2 border-black flex mx-5 rounded-lg">
+             <div className="mt-10 border-2 border-white text-white flex mx-5 rounded-lg">
             
                 <div className="ml-2">
                     <span className="text-5xl font-Roboto tracking-tight font-semibold">
@@ -32,7 +32,7 @@ export default function Landing(){
                 </div>
              </div>
 
-             <div className="mt-10 border-2 border-black flex mx-5 rounded-lg">
+             <div className="mt-10 border-2 border-white text-white flex mx-5 rounded-lg">
              
                 <div className="ml-2">
                     <span className="text-5xl font-Roboto tracking-tight font-semibold">

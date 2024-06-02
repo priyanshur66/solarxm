@@ -9,7 +9,8 @@ import {
 } from "../utils";
 import Card from "./Card";
 import Link from "next/link";
-export const GridBackground = () => {
+export const 
+GridBackground = () => {
   const [hmBalance, setHmBalance] = useState("Fetching ...");
   const [marketPrice, setMarketPrice] = useState("Fetching");
   const [ordersArray, setOrdersArray] = useState([]);
@@ -47,42 +48,41 @@ export const GridBackground = () => {
     updateMarketPrice();
   }, [ordersArray]);
   return (
-    <div className=" w-full dark:bg-grid-white/[0.2] max-h-screen  items-center justify-center">
-      <h1 className="scroll-m-20 text-5xl font-extrabold text-center tracking-tight lg:text-5xl mt-10">
+    <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center">
+      <h1 className=" text-5xl font-extrabold text-center tracking-tight lg:text-6xl text-white">
         Buy Some
-        <mark className="bg-yellow-500 ml-3 rounded-lg px-3">
-          Energy Tokens
-        </mark>{" "}
-        from harmony .
+        <mark className="bg-yellow-500 ml-3 rounded-lg px-3 mr-2">Energy Tokens</mark> 
+        from harmony.
       </h1>
 
-      <div className="border-2  border-zinc-900 p-2 mt-10 mx-60 rounded ">
-        <div className="text-center text-3xl  font-extrabold tracking-tight">
-          You have generated{" "}
-          <mark className="px-5 rounded-2xl bg-sky-400">
+      <div className="border-2 border-gray-700 bg-gray-800 p-8 mt-10 mx-4 md:mx-60 rounded-lg shadow-lg">
+        <div className="text-center text-3xl font-extrabold tracking-tight text-white">
+          You have generated 
+          <mark className="px-5 rounded-2xl bg-sky-400 ml-3">
             <span className="text-black">{hmBalance}</span>
-          </mark>{" "}
-          HM tokens{" "}
+          </mark> 
+          HM tokens 
         </div>
 
-        <div className="text-center text-3xl pt-2 gap-y-2 font-extrabold tracking-tight">
-          Current Market Price{" "}
-          <mark className="px-5 rounded-3xl bg-white">
+        <div className="text-center text-3xl pt-2 font-extrabold tracking-tight text-white">
+          Current Market Price 
+          <mark className="px-5 rounded-3xl bg-black ml-3">
             <span className="text-green-600">{marketPrice}</span>
-          </mark>{" "}
-          per Token{" "}
+          </mark> 
+          per Token 
         </div>
+      </div>
 
-        
+      <div className="mt-10 w-full flex flex-wrap justify-center gap-4">
+        {ordersArray.map((data) => {
+          if (!data[9]) {
+            return <Card key={data[0]} array={data} />;
+          }
+        })}
       </div>
-      <div>
-      {ordersArray.map((data) => {
-        if (!data[9]) {
-          return <Card key={data[0]} array={data}></Card>;
-        }
-      })}
-      </div>
-      
     </div>
   );
 };
+ 
+
+

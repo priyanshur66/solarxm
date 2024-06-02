@@ -6,8 +6,8 @@ import "./globals.css";
 
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="">
+    <html lang="en" className="bg-black">
+      <body>
         <Providers>{children}</Providers>
       </body>
     </html>
