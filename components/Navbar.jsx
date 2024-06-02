@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Nabvar() {
     return(
         <div className="">
-            <nav className=" fixed w-full z-20 top-0 start-0 border-b border-gray-800 bg-gray-300 backdrop-blur-md rounded-b-full mt-1 ">
+            <nav className=" fixed w-full z-20 top-0 start-0 border-b border-gray-800 bg-gray-300 backdrop-blur-md rounded-b-full ">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link legacyBehavior href="/landing">
             <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">

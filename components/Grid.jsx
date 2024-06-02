@@ -51,14 +51,14 @@ GridBackground = () => {
     <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center">
       <h1 className=" text-5xl font-extrabold text-center tracking-tight lg:text-6xl text-white">
         Buy Some
-        <mark className="bg-yellow-500 ml-3 rounded-lg px-3 mr-2">Energy Tokens</mark> 
+        <mark className="bg-yellow-500 mx-2 rounded-lg px-3 mr-2">Energy Tokens</mark> 
         from harmony.
       </h1>
 
       <div className="border-2 border-gray-700 bg-gray-800 p-8 mt-10 mx-4 md:mx-60 rounded-lg shadow-lg">
         <div className="text-center text-3xl font-extrabold tracking-tight text-white">
           You have generated 
-          <mark className="px-5 rounded-2xl bg-sky-400 ml-3">
+          <mark className="px-5 rounded-2xl bg-sky-400 mx-3">
             <span className="text-black">{hmBalance}</span>
           </mark> 
           HM tokens 
@@ -66,7 +66,7 @@ GridBackground = () => {
 
         <div className="text-center text-3xl pt-2 font-extrabold tracking-tight text-white">
           Current Market Price 
-          <mark className="px-5 rounded-3xl bg-black ml-3">
+          <mark className="px-5 rounded-3xl bg-white mx-3">
             <span className="text-green-600">{marketPrice}</span>
           </mark> 
           per Token 
