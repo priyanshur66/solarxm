@@ -165,7 +165,7 @@ export default function Main() {
                   style={{ display: toggle ? "block" : "none" }}
                 >
                   <label htmlFor="" className="text-xl font-semibold mt-5">
-                    Price for option (Lisk)
+                    Price for option (Fil)
                   </label>
                   <br />
                   <input

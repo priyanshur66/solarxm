@@ -47,7 +47,7 @@ export const GridBackground = () => {
     updateMarketPrice();
   }, [ordersArray]);
   return (
-    <div className=" w-full bg-gradient-to-r from-slate-400 to-slate-300 dark:bg-grid-white/[0.2] max-h-screen  items-center justify-center">
+    <div className=" w-full dark:bg-grid-white/[0.2] max-h-screen  items-center justify-center">
       <h1 className="scroll-m-20 text-5xl font-extrabold text-center tracking-tight lg:text-5xl mt-10">
         Buy Some
         <mark className="bg-yellow-500 ml-3 rounded-lg px-3">
