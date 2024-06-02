@@ -42,8 +42,8 @@ export default function Setup() {
   return (
     <div className="bg-black">
       <BrandNabvar />
-      <h1 className="text-white text-center mt-10">khhskf</h1>
-      <div className="flex flex-row content-center justify-center mt-44">
+      <h1 className="text-white text-center mt-10 text-7xl font-bold">Setup Your Shopify Store</h1>
+      <div className="flex flex-row content-center justify-center mt-36">
         <form
           onSubmit={handleAddPromotionSecret}
           className="py-10 px-5 mx-40 flex flex-col border-black rounded-md bg-slate-300 border-2 w-1/2 "
