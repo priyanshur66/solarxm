@@ -7,7 +7,7 @@ import {
   getHmTokenBalance,
 } from "../../utils";
 import Card from "../../components/Card";
-import { GridBackground } from "../../components/grid";
+import { GridBackground } from "@/components/Grid"
 
 export default function Buy() {
   return (

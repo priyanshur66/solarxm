@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
-import { createSellOrder, addGenStation, getHmTokenBalance } from "../../utils";
+import { createSellOrder, addGenStation, getSLRTokenBalance } from "../../utils";
 import { ToastContainer, toast , Slide , Bounce} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from "next/link";
 export default function Main() {
-  const [hmBalance, setHmBalance] = useState("Fetching ...");
+  const [SLRBalance, setSLRBalance] = useState("Fetching ...");
   const [noOfTokens, setNoOfTokens] = useState(0);
   const [price, setPrice] = useState(0);
   const [isOption, setIsOption] = useState(false);
@@ -15,14 +15,14 @@ export default function Main() {
   const [toggle, setToggle] = useState(false);
 
 
-  async function handleHmBalanceUpdate() {
-    console.log("Fetching HM token balance...");
+  async function handleSLRBalanceUpdate() {
+    console.log("Fetching SLR token balance...");
     try {
-      const updatedBalance = await getHmTokenBalance();
+      const updatedBalance = await getSLRTokenBalance();
       console.log("Fetched balance:", updatedBalance);
-      setHmBalance(updatedBalance);
+      setSLRBalance(updatedBalance);
     } catch (error) {
-      console.error("Failed to fetch HM token balance:", error);
+      console.error("Failed to fetch SLR token balance:", error);
     }
   }
 
@@ -55,7 +55,7 @@ export default function Main() {
   }
 
   useEffect(() => {
-    handleHmBalanceUpdate();
+    handleSLRBalanceUpdate();
   }, []);
 
   const handleToggle = () => {
@@ -69,7 +69,7 @@ export default function Main() {
       
       {/* <button
         onClick={() => {
-          handleHmBalanceUpdate();
+          handleSLRBalanceUpdate();
         }}
       >
         click
@@ -77,8 +77,8 @@ export default function Main() {
 
       <div className=" mt-16 items-center justify-center w-full">
         <div className=" text-4xl font-extrabold tracking-tight lg:text-5xl text-center border-1 rounded-md content-center font-roboto p-2 border-2 mx-80 py-3 border-black ">
-          You have generated <mark className="px-5 rounded-lg bg-white"><span className="text-green-600">{hmBalance}</span></mark>{" "}
-          HM tokens{" "}
+          You have generated <mark className="px-5 rounded-lg bg-white"><span className="text-green-600">{SLRBalance}</span></mark>{" "}
+          SLR tokens{" "}
         </div>
 
         <div className=" rounded-lg w-1/3 items-center justify-center mx-40 mt-8 ">
