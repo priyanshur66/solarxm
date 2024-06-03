@@ -50,9 +50,9 @@ GridBackground = () => {
   return (
     <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center">
       <h1 className=" text-5xl font-extrabold text-center tracking-tight lg:text-6xl text-white">
-        Buy Some
+        Buy 
         <mark className="bg-yellow-500 mx-2 rounded-lg px-3 mr-2">Energy Tokens</mark> 
-        from harmony.
+        from SolarXM.
       </h1>
 
       <div className="border-2 border-gray-700 bg-gray-800 p-8 mt-10 mx-4 md:mx-60 rounded-lg shadow-lg">

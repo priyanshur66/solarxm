@@ -120,7 +120,7 @@ export default function SimulateSensor() {
 
         if (Math.abs(energyDiff) <= tolerance) {
             return (
-                <button className=" text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center"  type="button" onClick={sendToSmartContract}>
+                <button className=" text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center"  type="button" >
                     Send to Smart Contract
                 </button>
             );
@@ -219,7 +219,7 @@ export default function SimulateSensor() {
                        
                         <h2 className="my-2">SLR Tokens</h2>
                         <p className="my-2">You will receive <span className="text-emerald">{slrTokens.toFixed()}</span> SLR tokens</p>
-                        {hasStopped&&(((totalEnergyUsed>totalExpectedOutput))?<button className=" text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center" type="button">
+                        {hasStopped&&(((totalEnergyUsed>totalExpectedOutput))?<button onClick={()=>{simulateSensorSendingData(slrTokens.toFixed())}} className=" text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center" type="button">
                     Anomaly Detected: Can't Send Data to Smart Contract
                 </button>: <button onClick={()=>{simulateSensorSendingData(slrTokens.toFixed())}} className=" text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-1.5 text-center"  type="button">
                     Send to Smart Contract

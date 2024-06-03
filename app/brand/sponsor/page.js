@@ -7,7 +7,7 @@ import {
   getOrdersArray,
   addGenStation,
   getMarketPrice,
-  getSLRTokenBalance,
+  getRECTokenBalance,
 } from "../../../utils";
 import BrandCard from "../../../components/BrandCard";
 import Link from "next/link";
@@ -19,11 +19,11 @@ export default function Sponsor() {
   async function handleSLRBalanceUpdate() {
     //console.log("Fetching GW token balance...");
     try {
-      const updatedBalance = await getSLRTokenBalance();
+      const updatedBalance = await getRECTokenBalance();
       console.log("Fetched balance:", updatedBalance);
       setSLRBalance(updatedBalance);
     } catch (error) {
-      console.error("Failed to fetch SLR token balance:", error);
+      console.error("Failed to fetch REC token balance:", error);
     }
   }
 
@@ -52,7 +52,7 @@ export default function Sponsor() {
       console.log("Fetched Market Price:", updatedPrice);
       setMarketPrice(updatedPrice);
     } catch (error) {
-      console.error("Failed to fetch SLR token balance:", error);
+      console.error("Failed to fetch REC token balance:", error);
     }
   }
 
@@ -75,16 +75,16 @@ export default function Sponsor() {
           <mark className="bg-yellow-500 ml-3 rounded-lg px-3">
             Self Sufficient users
           </mark>{" "}
-          from harmony .
+          from SolarXM .
         </h1>
 
         <div className="border-2 border-white py-5 mt-10 mx-60 rounded ">
           <div className="text-center text-white text-3xl  font-extrabold tracking-wider">
-            You have Burned{" "}
+            You have {" "}
             <mark className="px-5 py-2 rounded-2xl bg-sky-400">
               <span className="text-black">{SLRBalance}</span>
             </mark>{" "}
-            SLR tokens{" "}
+            REC tokens{" "}
           </div>
         </div>
 

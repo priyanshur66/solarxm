@@ -27,6 +27,7 @@ import {
   filecoinCalibration,
   sepolia,
   arbitrumSepolia,
+  scrollSepolia,
   zora,
 } from "wagmi/chains";
 
@@ -46,7 +47,7 @@ const config = getDefaultConfig({
     },
   ],
   chains: [
-    polygonAmoy,filecoinCalibration,arbitrumSepolia,
+    scrollSepolia,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
   ],
   ssr: true,
@@ -58,10 +59,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider
-          modalSize="compact"
-          theme={darkTheme()} 
-        >
+        <RainbowKitProvider modalSize="compact" theme={darkTheme()}>
           {children}
         </RainbowKitProvider>
       </QueryClientProvider>

@@ -137,6 +137,21 @@ export async function getSLRTokenBalance() {
   return tx.toString();
 }
 
+export async function getRECTokenBalance() {
+  await connectWithMetamask();
+  // console.log(signer.address);
+  const abi = registryAbi;
+  const address = registryAddress;
+  // console.log(address);
+  // console.log(abi);
+  // console.log(provider);
+  const contract = new ethers.Contract(address, abi, provider);
+  const tx = await contract.recBalances(signer.address);
+  //await tx.wait();
+  //console.log(tx.toString());
+  return tx.toString();
+}
+
 export async function getMarketPrice() {
   await connectWithMetamask();
   const abi = registryAbi;
@@ -172,11 +187,12 @@ export async function getOrdersArray() {
 
 export async function addGenStation(_code) {
   const encodedCode = await getSHA256Hash(_code);
-  //console.log(encodedCode);
+  console.log(encodedCode);
   const abi = registryAbi;
   const address = registryAddress;
   const contract = new ethers.Contract(address, abi, signer);
   console.log(contract);
+
   const tx = await contract.addGenStation(encodedCode);
   console.log(tx);
 }
@@ -227,16 +243,20 @@ export async function addPromotionSecret(promotionSecret) {
 }
 
 export async function simulateSensorSendingData(newValue) {
-  console.log('called')
+  console.log("called");
   const abi = registryAbi;
   const address = registryAddress;
   const contract = new ethers.Contract(address, abi, signer);
   const gasPrice = parseUnits("20", "gwei");
   const gasLimit = 300000;
-  const tx = await contract.updateHMTokenBalance("rn285",newValue, {
-    gasPrice: gasPrice,
-    gasLimit: gasLimit,
-  });
+  const tx = await contract.updateSLRTokenBalance(
+    "2105742f5adb229dd4be3898314fdd0f0dd35efbf0a5724cc7d5a17eee9afd1f",
+    newValue,
+    {
+      gasPrice: gasPrice,
+      gasLimit: gasLimit,
+    }
+  );
   console.log(tx);
 }
 
@@ -351,8 +371,10 @@ export async function generateDiscountCode(
   }
 }
 export async function getNearbyWeatherXMDevices(param) {
-  const response = await fetch(`https://api.weatherxm.com/api/v1/network/search?query=${param}&exact=false&exclude=places`);
-  
+  const response = await fetch(
+    `https://api.weatherxm.com/api/v1/network/search?query=${param}&exact=false&exclude=places`
+  );
+
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
@@ -362,8 +384,10 @@ export async function getNearbyWeatherXMDevices(param) {
 }
 
 export async function getSolarIrradiance(param) {
-  const response = await fetch(`https://api.weatherxm.com/api/v1/cells/${param}/devices`);
-  
+  const response = await fetch(
+    `https://api.weatherxm.com/api/v1/cells/${param}/devices`
+  );
+
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
@@ -375,15 +399,15 @@ export async function getSolarIrradiance(param) {
 async function fetchWeatherxmData() {
   const url = "https://api.weatherxm.com/api/v1/cells/";
   try {
-      const response = await fetch(url);
-      if (response.ok) {
-          return await response.json();
-      } else {
-          throw new Error('Network response was not ok');
-      }
+    const response = await fetch(url);
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw new Error("Network response was not ok");
+    }
   } catch (error) {
-      console.error('Fetch error:', error);
-      return [];
+    console.error("Fetch error:", error);
+    return [];
   }
 }
 
@@ -395,20 +419,25 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 export async function findClosestDeviceIndex(targetLat, targetLon) {
   const data = await fetchWeatherxmData();
   if (!data.length) {
-      return null;
+    return null;
   }
 
   let closestIndex = null;
   let smallestDistance = Infinity;
 
-  data.forEach(entry => {
-      const centerLat = entry.center.lat;
-      const centerLon = entry.center.lon;
-      const distance = calculateDistance(targetLat, targetLon, centerLat, centerLon);
-      if (distance < smallestDistance) {
-          smallestDistance = distance;
-          closestIndex = entry.index;
-      }
+  data.forEach((entry) => {
+    const centerLat = entry.center.lat;
+    const centerLon = entry.center.lon;
+    const distance = calculateDistance(
+      targetLat,
+      targetLon,
+      centerLat,
+      centerLon
+    );
+    if (distance < smallestDistance) {
+      smallestDistance = distance;
+      closestIndex = entry.index;
+    }
   });
 
   return closestIndex;
